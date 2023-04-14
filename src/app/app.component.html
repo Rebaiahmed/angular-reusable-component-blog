@@ -1,9 +1,12 @@
-<!-- other-component.html -->
-<app-reusable-button 
 
-[initialTemplate]="buttonTemplate"
->Submit</app-reusable-button>
-
-<div #buttonContext>
-  <ng-template #buttonTemplate> Add location </ng-template>
+<div>
+  <button mat-button (click)="openDialog()">Open simple dialog</button>
 </div>
+
+
+<div>
+  <button mat-button (click)="openDialogWithImage()">Open dialog with image content</button>
+</div>
+
+
+

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,26 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class ReusableButtonComponent  implements OnInit {
 
-  @Input() initialTemplate: any;
-  @Input() loadingTemplate: any;
-  @Input() doneTemplate: any;
-  @Input() getStatus$: Observable<any> = new Observable();
-  @Input() invalidForm: boolean = false;
+  @Input() currentTemplate:any
+  @Input() buttonClass: string = 'btn btn-primary';
   @Output() clickEmitter: EventEmitter<void> = new EventEmitter<void>();
   disabled: boolean = false;
-  buttonClass: string = 'btn btn-primary';
-  currentTemplate: any;
-
- 
-
-
-
-  constructor() {
-  }
 
   ngOnInit(): void {
-    //this.currentTemplate = this.initialTemplate;
-    //this.getButtonStatus();
   }
 
   click(){
