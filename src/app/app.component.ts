@@ -21,7 +21,15 @@ export class AppComponent {
 
   openDialogWithImage() {
     this.dialog.open(GenericDialogComponent,{
-      data: {modalTitle: 'My second modal', imageUrl:'https://placehold.co/600x400',
+      data: {modalTitle: 'My image content modal', imageUrl:'https://placehold.co/600x400',
+      buttonLabel:'Save'},
+    });
+  }
+
+
+  openDialogWithVideo() {
+    this.dialog.open(GenericDialogComponent,{
+      data: {modalTitle: '<b>Customized text bold</b>', videoUrl:'https://www.w3schools.com/html/movie.mp4',
       buttonLabel:'Save'},
     });
   }

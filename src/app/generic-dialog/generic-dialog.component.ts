@@ -13,8 +13,9 @@ export class GenericDialogComponent {
   ) {}
   @Input() modalTitle=this.data?.modalTitle ?? '';
   @Input() modalContent=this.data?.modalContent ?? '';
-  @Input() imageUrl=this.data?.imageUrl ?? '';
   @Input() buttonLabel=this.data?.buttonLabel ?? '';
   @Input() isModalVisible =false;
+  @Input() imageUrl=this.data?.imageUrl ?? '';
+  @Input() videoUrl=this.data?.videoUrl ?? '';
 
 }
