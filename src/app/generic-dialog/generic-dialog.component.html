@@ -1,19 +1,6 @@
 <h1 mat-dialog-title [innerHTML]="modalTitle"></h1>
 <div mat-dialog-content >
-  <div *ngIf="modalContent">
-   {{modalContent}}
-  
-  </div>
-  <div *ngIf="imageUrl">
-    <img [src]="imageUrl" />
-  </div>
-
-  <div *ngIf="videoUrl">
-    <video width="320" height="240" autoplay>
-      <source [src]="videoUrl" type="video/mp4">
-    </video>
-  </div>
- 
+  <ng-container *ngTemplateOutlet="templateContent"></ng-container>
 </div>
 
 
@@ -21,6 +8,7 @@
   <button mat-button mat-dialog-close>{{buttonLabel}}</button>
   <button mat-button mat-dialog-close cdkFocusInitial>Close</button>
 </div>
+
 
 
 

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { GenericDialogComponent } from './generic-dialog/generic-dialog.component';
 
@@ -8,8 +9,29 @@ import { GenericDialogComponent } from './generic-dialog/generic-dialog.componen
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- 
-  constructor(public dialog: MatDialog) {}
+  @ViewChild('formcontent') formContentTemplateRef: TemplateRef<any> | undefined;
+  hide = true;
+  myForm: FormGroup;
+  constructor(public dialog: MatDialog) {
+
+    this.myForm = new FormGroup({
+      name: new FormControl(''),
+      email:new FormControl(''),
+    });
+  }
+
+  email = new FormControl('', [Validators.required, Validators.email]);
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
+  
+  
 
   openDialog() {
     this.dialog.open(GenericDialogComponent,{
@@ -33,4 +55,12 @@ export class AppComponent {
       buttonLabel:'Save'},
     });
   }
+
+  openDialogNgTemplate() {
+    this.dialog.open(GenericDialogComponent,{
+      data: {modalTitle: '<b>Form component</b>',buttonLabel:'Save',templateContent:this.formContentTemplateRef,},
+    });
+  }
+
+  
 }

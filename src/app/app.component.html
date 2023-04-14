@@ -2,10 +2,55 @@
 <div style="display: flex; justify-content: space-between;">
   <button mat-raised-button color="primary" (click)="openDialog()">Open simple dialog</button>
  
+  <button mat-raised-button color="primary" (click)="openDialogNgTemplate()">Open dialog with ngTemplateOutlet</button>
+
   <button mat-raised-button color="primary" (click)="openDialogWithVideo()">Open dialog with video content</button>
 
   <button mat-raised-button color="primary" (click)="openDialogWithImage()">Open dialog with image content</button>
+
+  
 </div>
+
+
+
+<ng-template #formcontent>
+  <form [formGroup]="myForm">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+     
+    </mat-form-field>
+
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" floatLabel="always">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" class="example-right-align" placeholder="0">
+        <span matTextPrefix>$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+      </mat-form-field>
+    </div>
+
+
+  
+    
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Submit</button>
+  </form>
+</ng-template>
 
 
 

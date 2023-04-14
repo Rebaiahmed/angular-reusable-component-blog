@@ -18,4 +18,7 @@ export class GenericDialogComponent {
   @Input() imageUrl=this.data?.imageUrl ?? '';
   @Input() videoUrl=this.data?.videoUrl ?? '';
 
+
+  @Input() templateContent=this.data?.templateContent ?? '';
+
 }
